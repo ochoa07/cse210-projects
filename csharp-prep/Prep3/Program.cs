@@ -4,7 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
-         Random randomGenerator = new Random();
+        Random randomGenerator = new Random();
         int magicNum = randomGenerator.Next(1, 101);
 
         int guess = -1;
