@@ -4,7 +4,7 @@ using System.IO;
 
 namespace JournalApp
 {
-    // Represents a single journal entry
+
     class JournalEntry
     {
         public string Prompt { get; set; }
@@ -18,7 +18,7 @@ namespace JournalApp
             Date = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         }
 
-        // Method to display a journal entry
+
         public void DisplayEntry()
         {
             Console.WriteLine($"Date: {Date}");
@@ -26,13 +26,13 @@ namespace JournalApp
             Console.WriteLine($"Response: {Response}\n");
         }
 
-        // Method to format the journal entry for file saving
+
         public string FormatForSaving()
         {
             return $"{Date} | {Prompt} | {Response}";
         }
 
-        // Method to parse an entry from a file
+    
         public static JournalEntry ParseEntry(string entryLine)
         {
             string[] parts = entryLine.Split('|');
@@ -47,7 +47,7 @@ namespace JournalApp
         }
     }
 
-    // Manages a collection of journal entries
+
     class Journal
     {
         private List<JournalEntry> entries;
@@ -65,7 +65,7 @@ namespace JournalApp
             entries = new List<JournalEntry>();
         }
 
-        // Adds a new entry with a random prompt
+
         public void AddEntry()
         {
             Random random = new Random();
@@ -79,7 +79,7 @@ namespace JournalApp
             Console.WriteLine("Entry added successfully.\n");
         }
 
-        // Displays all journal entries
+
         public void DisplayEntries()
         {
             if (entries.Count == 0)
@@ -96,7 +96,7 @@ namespace JournalApp
             }
         }
 
-        // Saves journal entries to a file
+
         public void SaveToFile(string fileName)
         {
             using (StreamWriter writer = new StreamWriter(fileName))
@@ -109,12 +109,12 @@ namespace JournalApp
             Console.WriteLine("Journal saved to file successfully.\n");
         }
 
-        // Loads journal entries from a file
+
         public void LoadFromFile(string fileName)
         {
             if (File.Exists(fileName))
             {
-                entries.Clear(); // Clear the current entries before loading
+                entries.Clear();
                 string[] lines = File.ReadAllLines(fileName);
                 foreach (var line in lines)
                 {
